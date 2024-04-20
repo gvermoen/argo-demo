@@ -18,3 +18,19 @@ spec:
     automated: 
       selfHeal: true
       prune: true
+
+
+project: default
+source:
+  repoURL: 'https://github.com/gvermoen/argo-demo'
+  path: jade-shooter
+  targetRevision: HEAD
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: jade-shooter
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
