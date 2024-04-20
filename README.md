@@ -5,12 +5,15 @@
 kubectl create namespace argocd
 kubectl config set-context --current --namespace=argocd
 
+-- either:
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+-- or: 
 kubectl -n argocd apply -f argocd-install.yaml
+
 kubectl -n argocd apply -f argocd-cmd-params-cm.yaml
 kubectl -n argocd apply -f argocd-ingress.yaml
 kubectl -n argocd rollout restart deployment argocd-server
 kubectl -n argocd rollout status deployment argocd-server
-
 
 -- get password with either:
 argocd admin initial-password -n argocd   (needs argocd-cli installed)

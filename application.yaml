@@ -1,36 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: simplest-k8s
+  name: jade-shooter
   namespace: argocd
 spec:
-  destination:
-    namespace: default
-    server: https://kubernetes.default.svc
   project: default
   source:
-    path: .
-    repoURL: https://github.com/jwsy/simplest-k8s
+    repoURL: 'https://github.com/gvermoen/argo-demo'
+    path: jade-shooter
     targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: jade-shooter
   syncPolicy:
-    syncOptions: 
-    - CreateNamespace=true
-    automated: 
-      selfHeal: true
+    automated:
       prune: true
-
-
-project: default
-source:
-  repoURL: 'https://github.com/gvermoen/argo-demo'
-  path: jade-shooter
-  targetRevision: HEAD
-destination:
-  server: 'https://kubernetes.default.svc'
-  namespace: jade-shooter
-syncPolicy:
-  automated:
-    prune: true
-    selfHeal: true
-  syncOptions:
-    - CreateNamespace=true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
