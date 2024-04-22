@@ -22,10 +22,14 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 
 http://argocd.192.168.205.2.traefik.me (username: admin / password: see above)
 
+-- Install ArgoCD application with kubectl:
+kubectl apply -f app-configs/hello-app.yaml 
+
 ```
 ## ArgoCD cli:
 ```shell
 brew install argocd
 argocd login argocd.192.168.205.2.traefik.me --grpc-web --plaintext --username admin --password kR6ewCQLvrghGzlG
 argocd app list
+
 ```
