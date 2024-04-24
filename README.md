@@ -14,7 +14,7 @@ kubectl -n argocd apply -f argocd/argocd-cmd-params-cm.yaml
 kubectl -n argocd rollout restart deployment argocd-server
 kubectl -n argocd rollout status deployment argocd-server
 ```
-### Dashboard Login
+## ArgoCD Dashboard Login
 ```shell
 -- Get initial admin password (remove trailing %):
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
@@ -32,7 +32,7 @@ brew install argocd
 argocd login argocd.192.168.205.2.traefik.me --grpc-web --plaintext --username admin --password kR6ewCQLvrghGzlG
 argocd app list
 ```
-of, zonder argocd cli te hoeven installeren:
+Or, without the need of installing argocd-cli yourself, just exec into argocd-server pod:
 ```shell
 kubectl exec --stdin --tty argocd-server-7d95d57fc5-hhbp9 -- /bin/bash
 argocd admin initial-password -n argocd
