@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello
+spec:
+  rules:
+    - host: hello.192.168.205.2.traefik.me
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: hello-service
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - hello.192.168.205.2.traefik.me
