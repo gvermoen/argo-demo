@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: jade-shooter
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: jade-shooter
