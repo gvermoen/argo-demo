@@ -4,8 +4,7 @@ metadata:
   name: hello-kubernetes-service
 spec:
   ports:
-    - name: http
-      port: 80
+    - port: 8080
       targetPort: 8080
   selector:
     app: hello-kubernetes
